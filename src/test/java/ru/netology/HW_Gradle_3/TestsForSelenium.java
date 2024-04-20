@@ -12,15 +12,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class TestsForSelenium {
 
     private WebDriver driver;
-    
+
     @BeforeAll
     public static void setupAll() {
-       //WebDriverManager WebDriverManager = null;
         WebDriverManager.chromedriver().setup();
     }
 
     @BeforeEach
-    public void BeforeEach(){
+    public void BeforeEach() {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--no-sandbox");
@@ -30,18 +29,18 @@ public class TestsForSelenium {
     }
 
     @AfterEach
-    public void AfterEach(){
+    public void AfterEach() {
         driver.quit();
         driver = null;
     }
 
     @Test
-    public void SuccessfulForm(){
+    public void SuccessfulForm() {
         driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Лебедев-Кумач Сергей");
         driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+79501231234");
         driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
         driver.findElement(By.cssSelector("button")).click();
-        String actual = driver.findElement(By.cssSelector("[data-test-id='order-success']")).getText();
+        String actual = driver.findElement(By.cssSelector("[data-test-id='order-success']")).getText().trim();
         assertEquals("Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.", actual);
 
     }
