@@ -41,7 +41,7 @@ public class TestsForSelenium {
         driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+79501231234");
         driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
         driver.findElement(By.cssSelector("button")).click();
-        String actual = driver.findElement(By.cssSelector("[data-test-id='order-success']")).getText().trim();
+        String actual = driver.findElement(By.cssSelector("[data-test-id='order-success']")).getText();
         assertEquals("Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.", actual);
 
     }
